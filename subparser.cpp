@@ -71,5 +71,18 @@ void SubParser::ParseSRT(QString filePath)
 
 double SubParser::strToTime(QString str)
 {
-    
+    QStringList total,secs;
+    int hours=0, mins=0, seconds=0, ms=0;
+    double total_sec=0;
+    total = str.split(':');
+    hours = atoi(total[0].toStdString().c_str());
+    mins = atoi(total[1].toStdString().c_str());
+    if(total[2].contains('.'))
+        secs = total[2].split('.'); //ssa file
+    else
+        secs = total[2].split(','); //srt file
+    seconds = atoi(secs[0].toStdString().c_str());
+    ms = atoi(secs[1].toStdString().c_str());
+    total_sec= hours *3600 + mins *60 + seconds + ms * 0.001 ;
+    return total_sec;
 }
