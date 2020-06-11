@@ -13,6 +13,7 @@ public:
     SubParser(QWidget *parent = nullptr);
     ~SubParser();
     void ParseSRT(QString filePath);
+    void ParseSSA(QString filePath);
     double strToTime(QString str);
 };
 #endif // SUBPARSER_H
